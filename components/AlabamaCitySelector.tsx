@@ -150,4 +150,24 @@ const AlabamaCitySelector: React.FC<AlabamaCitySelectorProps> = ({ onCitySelect,
         </SelectTrigger>
         <SelectContent className="bg-black border-[#E4B649]/20">
           <ScrollArea className="h-[200px]">
-            {ALABAMA_CITIES.map
+            {ALABAMA_CITIES.map((city) => (
+              <SelectItem 
+                key={city.rank} 
+                value={city.name}
+                className="text-white hover:bg-[#E4B649]/20"
+                disabled={selectedCities.includes(city.name)}
+              >
+                {city.name}
+              </SelectItem>
+            ))}
+          </ScrollArea>
+        </SelectContent>
+      </Select>
+      <p className="text-xs text-[#E4B649]/70">
+        * You can select up to 10 cities from Alabama
+      </p>
+    </div>
+  )
+}
+
+export default AlabamaCitySelector
