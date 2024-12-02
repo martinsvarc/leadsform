@@ -7,7 +7,7 @@ interface City {
   rank: number
 }
 
-const ARIZONA_CITIES: City[] = [
+const ALASKA_CITIES: City[] = [
   { rank: 1, name: "Anchorage" },
   { rank: 2, name: "Fairbanks" },
   { rank: 3, name: "Juneau" },
@@ -34,19 +34,19 @@ const ARIZONA_CITIES: City[] = [
   { rank: 24, name: "Fishhook" },
 ]
 
-interface ArizonaCitySelectorProps {
+interface AlaskaCitySelectorProps {
   onCitySelect: (city: City) => void
   selectedCities: string[]
 }
 
-const ArizonaCitySelector: React.FC<ArizonaCitySelectorProps> = ({ onCitySelect, selectedCities }) => {
+const AlaskaCitySelector: React.FC<AlaskaCitySelectorProps> = ({ onCitySelect, selectedCities }) => {
   return (
     <div className="space-y-2">
       <label htmlFor="city-select" className="block text-sm font-medium text-[#E4B649]">
-        Select an Arizona City
+        Select an Alaska City
       </label>
       <Select onValueChange={(value) => {
-        const selectedCity = ARIZONA_CITIES.find(city => city.name === value)
+        const selectedCity = ALASKA_CITIES.find(city => city.name === value)
         if (selectedCity) onCitySelect(selectedCity)
       }}>
         <SelectTrigger id="city-select" className="w-full bg-black/50 border-[#E4B649]/20 text-white">
@@ -54,7 +54,7 @@ const ArizonaCitySelector: React.FC<ArizonaCitySelectorProps> = ({ onCitySelect,
         </SelectTrigger>
         <SelectContent className="bg-black border-[#E4B649]/20">
           <ScrollArea className="h-[200px]">
-            {ARIZONA_CITIES.map((city) => (
+            {ALASKA_CITIES.map((city) => (
               <SelectItem 
                 key={city.rank} 
                 value={city.name}
@@ -68,10 +68,10 @@ const ArizonaCitySelector: React.FC<ArizonaCitySelectorProps> = ({ onCitySelect,
         </SelectContent>
       </Select>
       <p className="text-xs text-[#E4B649]/70">
-        * You can select up to 10 cities from Arizona
+        * You can select up to 10 cities from Alaska
       </p>
     </div>
   )
 }
 
-export default ArizonaCitySelector
+export default AlaskaCitySelector
